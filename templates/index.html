@@ -4,24 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Optimization Algorithms Web App</title>
+  <title>Optimization Algorithms</title>
 </head>
 
 <body>
-  <h1>Optimization Algorithms Web App</h1>
+  <h1>Optimization Algorithms</h1>
 
   <form method="POST" action="/">
     <label for="initial_value">Enter Initial Value:</label>
     <input type="text" name="initial_value" required>
-
+  
     <label for="num_iterations">Enter Number of Iterations:</label>
     <input type="text" name="num_iterations" required>
-
+  
+    <!-- Update the dropdown menu field name to 'algorithm' -->
+    <label for="algorithm">Choose Algorithm:</label>
+    <select name="algorithm" required>
+      {% for algo, full_name in algorithms.items() %}
+      <option value="{{ algo }}" {% if selected_algorithm==algo %}selected{% endif %}>{{ full_name }}</option>
+      {% endfor %}
+    </select>
+  
     <button type="submit">Optimize</button>
   </form>
-
-  {% if image_path %}
+  
+  {% if show_image %}
   <h2>Optimization Results:</h2>
+  <p>Algorithm: {{ algorithms[selected_algorithm] }}</p>
   <img src="{{ image_path }}" alt="Optimization Plot">
   {% endif %}
 </body>
