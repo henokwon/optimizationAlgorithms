@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimization Algorithms Web App</title>
+</head>
+
+<body>
+  <h1>Optimization Algorithms Web App</h1>
+
+  <form method="POST" action="/">
+    <label for="initial_value">Enter Initial Value:</label>
+    <input type="text" name="initial_value" required>
+
+    <label for="num_iterations">Enter Number of Iterations:</label>
+    <input type="text" name="num_iterations" required>
+
+    <button type="submit">Optimize</button>
+  </form>
+
+  {% if image_path %}
+  <h2>Optimization Results:</h2>
+  <img src="{{ image_path }}" alt="Optimization Plot">
+  {% endif %}
+</body>
+
+</html>
